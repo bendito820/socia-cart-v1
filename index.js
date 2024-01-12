@@ -272,7 +272,7 @@ app.get("/profile/:userId", async (req, res) => {
     const user = await User.findById(userId);
 
     if (!user) {
-      res.status(404).json({ message: "User not found" });
+      return res.status(404).json({ message: "User not found" });
     }
 
     res.status(200).json({ user });
@@ -326,7 +326,7 @@ app.get("/orders", async (req, res) => {
     const orders = await Order.find().populate("user");
 
     if (!orders) {
-      res.status(404).json({ message: "Orders not found" });
+      return res.status(404).json({ message: "Orders not found" });
     }
 
     console.log(orders);
